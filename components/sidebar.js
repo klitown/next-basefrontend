@@ -47,10 +47,10 @@ export default function Sidebar({ children, setUser }) {
                 pl="4"
                 py="3"
                 cursor="pointer"
-                color={useColorModeValue("inherit", "gray.400")}
+                color="gray.900"
                 _hover={{
-                    bg: useColorModeValue("gray.100", "gray.900"),
-                    color: useColorModeValue("gray.900", "gray.200"),
+                    bg: "gray.300",
+                    color: "gray.300"
                 }}
                 role="group"
                 fontWeight="semibold"
@@ -62,7 +62,7 @@ export default function Sidebar({ children, setUser }) {
                         mx="2"
                         boxSize="4"
                         _groupHover={{
-                            color: useColorModeValue("gray.600", "gray.300"),
+                            color: "gray.300"
                         }}
                         as={icon}
                     />
@@ -83,8 +83,8 @@ export default function Sidebar({ children, setUser }) {
             pb="10"
             overflowX="hidden"
             overflowY="auto"
-            bg={useColorModeValue("white", "gray.800")}
-            borderColor={useColorModeValue("inherit", "gray.700")}
+            bg="gray.800"
+            borderColor="gray.700"
             borderRightWidth="1px"
             w="60"
             {...props}
@@ -140,7 +140,7 @@ export default function Sidebar({ children, setUser }) {
     return (
         <Box
             as="section"
-            bg={useColorModeValue("gray.50", "gray.700")}
+            bg="gray.700"
             minH="100vh"
         >
             <SidebarContent display={{ base: "none", md: "unset" }} />
@@ -161,9 +161,9 @@ export default function Sidebar({ children, setUser }) {
                     justify="space-between"
                     w="full"
                     px="4"
-                    bg={useColorModeValue("white", "gray.800")}
+                    bg="gray.700"
                     borderBottomWidth="1px"
-                    borderColor={useColorModeValue("inherit", "gray.700")}
+                    borderColor="gray.700"
                     h="14"
                 >
                     <IconButton

@@ -68,7 +68,6 @@ const UserCard = () => {
                         <Box w={{ base: '100%', sm: '100%', md: '100%', xl: '33.3%' }} mt={{ sm: '4' }}>
                             <Icon
                                 as={BsFillBriefcaseFill}
-                                as={BsFillBriefcaseFill}
                                 h={6}
                                 w={6}
                                 mr={2}
