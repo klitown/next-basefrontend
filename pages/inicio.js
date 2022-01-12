@@ -15,9 +15,7 @@ const Inicio = () => {
         </Text>
       </Heading>
       <Text color={'gray.500'} mt="10">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-        voluptua.
+        ¡Hola!
       </Text>
     </Box>
   );
