@@ -1,7 +1,7 @@
-import React, { useState } from "react";
 import {
     Avatar,
     Box,
+    Collapse,
     Drawer,
     DrawerContent,
     DrawerOverlay,
@@ -17,19 +17,18 @@ import {
     MenuGroup,
     MenuItem,
     MenuDivider,
-    Button
+    Button,
+    Divider
 } from "@chakra-ui/react";
-import { FaClipboardCheck, FaRss } from "react-icons/fa";
-import { FiMenu } from "react-icons/fi";
-import { HiCode, HiCollection } from "react-icons/hi";
-import { MdHome } from "react-icons/md";
+import { MdHome, MdKeyboardArrowRight, MdMenu, MdPriorityHigh, MdOutlineAttachMoney, MdOutlineBubbleChart, MdOutlineLoupe } from "react-icons/md";
+import React from "react";
 import { useRouter } from "next/router";
 import authService from "../utils/services/auth.service";
 
 export default function Sidebar({ children, setUser }) {
-
     const sidebar = useDisclosure();
     const router = useRouter();
+    const integrations = useDisclosure();
     const onNavigate = (path) => {
         router.push(`/${path}`);
     }
@@ -45,14 +44,13 @@ export default function Sidebar({ children, setUser }) {
             <Flex
                 align="center"
                 px="4"
-                mx="2"
-                rounded="md"
+                pl="4"
                 py="3"
                 cursor="pointer"
-                color="blue.700"
+                color={useColorModeValue("inherit", "gray.400")}
                 _hover={{
-                    bg: "blue.100",
-                    color: "whiteAlpha.900",
+                    bg: useColorModeValue("gray.100", "gray.900"),
+                    color: useColorModeValue("gray.900", "gray.200"),
                 }}
                 role="group"
                 fontWeight="semibold"
@@ -61,11 +59,10 @@ export default function Sidebar({ children, setUser }) {
             >
                 {icon && (
                     <Icon
-                        mr="3"
-                        mt="0"
+                        mx="2"
                         boxSize="4"
                         _groupHover={{
-                            color: "black.300",
+                            color: useColorModeValue("gray.600", "gray.300"),
                         }}
                         as={icon}
                     />
@@ -86,34 +83,60 @@ export default function Sidebar({ children, setUser }) {
             pb="10"
             overflowX="hidden"
             overflowY="auto"
-            bg="white.600"
-            borderColor="blackAlpha.300"
+            bg={useColorModeValue("white", "gray.800")}
+            borderColor={useColorModeValue("inherit", "gray.700")}
             borderRightWidth="1px"
             w="60"
             {...props}
         >
             <Flex px="4" py="5" align="center">
 
-                <Text fontSize="4xl" ml="2" color="blue.300" fontWeight="semibold">
-                    Enterprise Solutions
+                <Text
+                    fontSize="3xl"
+                    ml="2"
+                    color="blue.500"
+                    fontWeight="semibold"
+                >
+                    ENTERPRISE SOLUTIONS
                 </Text>
-
             </Flex>
             <Flex
                 direction="column"
                 as="nav"
                 fontSize="sm"
-                color="blue.600"
-                aria-label="Main sidebar"
+                color="gray.600"
+                aria-label="Main Navigation"
             >
-                <NavItem onClick={() => onNavigate('inicio')} icon={MdHome}> Administración</NavItem>
-                <NavItem onClick={() => onNavigate('test')} icon={FaRss}> Módulo 2 </NavItem>
-                <NavItem onClick={() => onNavigate('home')} icon={HiCollection}> Módulo 2 </NavItem>
-                <NavItem onClick={() => onNavigate('home')} icon={FaClipboardCheck}> Módulo 3 </NavItem>
+                <NavItem icon={MdHome} onClick={() => onNavigate('inicio')}>Inicio</NavItem>
+                <Divider/>
+                <NavItem icon={MdOutlineAttachMoney} onClick={() => onNavigate('inicio')}>Contrato</NavItem>
+                <Divider/>
+                <NavItem icon={MdOutlineBubbleChart} onClick={() => onNavigate('inicio')}>Permisos</NavItem>
+                <Divider/>
+                <NavItem icon={MdOutlineLoupe} onClick={() => onNavigate('inicio')}>Bonificaciones</NavItem>
+                <Divider/>
+                <NavItem icon={MdPriorityHigh} onClick={integrations.onToggle}>
+                    Más información
+                    <Icon
+                        as={MdKeyboardArrowRight}
+                        ml="auto"
+                        transform={integrations.isOpen && "rotate(90deg)"}
+                    />
+                </NavItem>
+                <Collapse in={integrations.isOpen}>
+                    <NavItem pl="12" py="2">
+                        Info 1
+                    </NavItem>
+                    <NavItem pl="12" py="2">
+                        Info 2
+                    </NavItem>
+                    <NavItem pl="12" py="2">
+                        Info 3
+                    </NavItem>
+                </Collapse>
             </Flex>
         </Box>
     );
-
     return (
         <Box
             as="section"
@@ -124,7 +147,7 @@ export default function Sidebar({ children, setUser }) {
             <Drawer
                 isOpen={sidebar.isOpen}
                 onClose={sidebar.onClose}
-                placement="top"
+                placement="left"
             >
                 <DrawerOverlay />
                 <DrawerContent>
@@ -138,16 +161,16 @@ export default function Sidebar({ children, setUser }) {
                     justify="space-between"
                     w="full"
                     px="4"
-                    bg="white"
+                    bg={useColorModeValue("white", "gray.800")}
                     borderBottomWidth="1px"
-                    borderColor="blackAlpha.300"
+                    borderColor={useColorModeValue("inherit", "gray.700")}
                     h="14"
                 >
                     <IconButton
                         aria-label="Menu"
                         display={{ base: "inline-flex", md: "none" }}
                         onClick={sidebar.onOpen}
-                        icon={<FiMenu />}
+                        icon={<MdMenu />}
                         size="sm"
                     />
                     <Box w="96" />
