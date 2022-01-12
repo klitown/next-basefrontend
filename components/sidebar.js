@@ -47,10 +47,10 @@ export default function Sidebar({ children, setUser }) {
                 pl="4"
                 py="3"
                 cursor="pointer"
-                color="gray.900"
+                color="blue.900"
                 _hover={{
-                    bg: "gray.300",
-                    color: "gray.300"
+                    bg: "blue.100",
+                    color: "black"
                 }}
                 role="group"
                 fontWeight="semibold"
@@ -62,7 +62,7 @@ export default function Sidebar({ children, setUser }) {
                         mx="2"
                         boxSize="4"
                         _groupHover={{
-                            color: "gray.300"
+                            color: "tomato"
                         }}
                         as={icon}
                     />
@@ -83,8 +83,8 @@ export default function Sidebar({ children, setUser }) {
             pb="10"
             overflowX="hidden"
             overflowY="auto"
-            bg="gray.800"
-            borderColor="gray.700"
+            bg="white"
+            borderColor="gray.300"
             borderRightWidth="1px"
             w="60"
             {...props}
@@ -104,7 +104,7 @@ export default function Sidebar({ children, setUser }) {
                 direction="column"
                 as="nav"
                 fontSize="sm"
-                color="gray.600"
+                color="blue.900"
                 aria-label="Main Navigation"
             >
                 <NavItem icon={MdHome} onClick={() => onNavigate('inicio')}>Inicio</NavItem>
@@ -161,9 +161,9 @@ export default function Sidebar({ children, setUser }) {
                     justify="space-between"
                     w="full"
                     px="4"
-                    bg="gray.700"
+                    bg="white"
                     borderBottomWidth="1px"
-                    borderColor="gray.700"
+                    borderColor="gray.200"
                     h="14"
                 >
                     <IconButton
@@ -202,10 +202,8 @@ export default function Sidebar({ children, setUser }) {
                     </Flex>
                 </Flex>
 
-                <Box as="main" p="4">
-                    <Box h="96">
+                <Box as="main" p="4" bg='white'>
                         {children}
-                    </Box>
                 </Box>
             </Box>
         </Box>
